@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-PDF RAG & Database Intelligent Chatbot</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="brand">
+                <i class="fa-solid fa-brain-circuit"></i>
+                <h2>RAG Workspace</h2>
+            </div>
+
+            <!-- Upload Section -->
+            <div class="nav-section">
+                <h3><i class="fa-solid fa-cloud-arrow-up"></i> Upload Document</h3>
+                <form id="uploadForm" class="upload-form">
+                    <div class="file-drop-zone" id="dropZone">
+                        <input type="file" id="pdfFile" accept=".pdf" required>
+                        <label for="pdfFile" id="fileLabel">
+                            <i class="fa-solid fa-file-pdf"></i>
+                            <span>Choose PDF or drag here</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn primary-btn">
+                        <i class="fa-solid fa-upload"></i> Upload & Index
+                    </button>
+                </form>
+                <div id="uploadStatus" class="status-msg"></div>
+            </div>
+
+            <!-- Uploaded Documents Viewer -->
+            <div class="nav-section">
+                <div class="section-header">
+                    <h3><i class="fa-solid fa-folder-open"></i> Indexed Docs</h3>
+                    <button id="loadDocsBtn" class="icon-btn" title="Refresh Documents"><i class="fa-solid fa-rotate"></i></button>
+                </div>
+                <ul id="docsList" class="info-list">
+                    <li class="empty-item">Loading documents...</li>
+                </ul>
+            </div>
+
+            <!-- Database Summary Section -->
+            <div class="nav-section">
+                <div class="section-header">
+                    <h3><i class="fa-solid fa-database"></i> Database Summary</h3>
+                    <button id="loadDbBtn" class="icon-btn" title="View DB Summary"><i class="fa-solid fa-rotate"></i></button>
+                </div>
+                <div id="dbViewBox" class="db-box">
+                    <p class="empty-text">Click refresh to load database state.</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-main">
+            <header class="chat-header">
+                <div class="header-title">
+                    <h1>Intelligent Assistant</h1>
+                    <span class="status-badge"><span class="dot"></span> Online</span>
+                </div>
+                <p class="header-subtitle">Seamlessly query your uploaded manuals, local databases, or general knowledge.</p>
+            </header>
+
+            <div id="chatBox" class="chat-box">
+                <div class="message bot-message welcome-msg">
+                    <div class="msg-content">
+                        <span class="route-badge system-badge">System</span>
+                        <p>Hello! I am your multi-source assistant. Ask me questions about your uploaded documents, database records, or general queries.</p>
+                    </div>
+                </div>
+            </div>
+
+            <form id="chatForm" class="chat-form">
+                <div class="input-wrapper">
+                    <input type="text" id="userInput" placeholder="Ask about your documents, database, or general chat..." autocomplete="off" required>
+                    <button type="submit" class="send-btn" title="Send message">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

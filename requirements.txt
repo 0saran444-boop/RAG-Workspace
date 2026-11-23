@@ -1,0 +1,13 @@
+Flask==3.1.0
+Flask-Cors==4.0.1
+pymongo==4.10.1
+langgraph==0.2.53
+langchain==0.3.7
+langchain-core==0.3.21
+langchain-community==0.3.5
+langchain-google-genai==2.0.4
+google-generativeai==0.8.3
+faiss-cpu==1.9.0
+sentence-transformers==3.2.0
+PyPDF==5.1.0
+python-dotenv==1.0.1
